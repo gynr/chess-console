@@ -14,8 +14,8 @@ List of application features
 
 2. **Supported Chess Pieces**
 
-   * **Pawn**: -> It can only move 1 step at a time, in the vertical forward direction.
-   * **King**: -> It can only move 1 step at a time, in all 8 directions (vertical, horizontal and diagonal)
+   * **Pawn**: It can only move 1 step at a time, in the vertical forward direction.
+   * **King**: It can only move 1 step at a time, in all 8 directions (vertical, horizontal and diagonal)
    * **Queen**: It can move across the board in all 8 directions.
 
 
@@ -27,6 +27,22 @@ List of application features
 
 ## Setup Instructions
 
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:gynr/chess-console.git
+   cd chess-console
+   ```
+
+2. Create and activate virtual env
+    ```bash
+    python3 -m venv venvChessConsole
+    source venvChessConsole/bin/activate
+    ```
+
+3. Install depenendcies
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ## How to Run the Program
 
