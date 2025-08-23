@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Callable
 
 class Board(ABC):
 
@@ -36,4 +37,8 @@ class Board(ABC):
         """
         pass
 
-    
+    def get_coordinates_validator(self) -> Callable[[tuple[int, int]], bool]:
+        """
+        Get a coordinates validator function.
+        """
+        return self.is_valid_cell_coordinates

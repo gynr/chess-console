@@ -69,13 +69,19 @@ def process_move(user_input: str):
     position = clean_input(position)
 
     piece_class = get_piece_class(piece_type)
-    board_class = get_board_class(STANDARD_BOARD)()
+    board = get_board_class(STANDARD_BOARD)()
 
-    if not board_class.is_valid_notation(position):
+    if not board.is_valid_notation(position):
         raise ValueError(f"Invalid notation: {position}")
 
     piece = piece_class(position)
-    moves = piece.get_possible_moves(board_class)
+    piece.set_coordinates(board.notation_to_cell_coordinates(position))   
+
+    coordinates_validator = board.get_coordinates_validator()
+    moves_coordinates = piece.get_possible_moves(coordinates_validator)
+    moves = [board.cell_coordinates_to_notation(move) for move in moves_coordinates]
+
+    print(f"Possible moves for {piece_type} at {position}:")
     print(moves)
 
 if __name__ == "__main__":
