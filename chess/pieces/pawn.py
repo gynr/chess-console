@@ -1,12 +1,12 @@
 from chess.interface.piece import Piece
 
+
 class Pawn(Piece):
-    """Pawn piece 
-    """
+    """Pawn piece"""
 
     def get_move_directions(self) -> tuple[list[tuple[int, int]], bool]:
         """Get all possible moves for a pawn piece from a given notation.
-        
+
         Possible behaviors:
         - Move 1 cell forward
 

@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Callable
 
+
 class Board(ABC):
 
     @abstractmethod

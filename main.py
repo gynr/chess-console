@@ -1,8 +1,10 @@
-from chess.interface.piece import Piece
-from chess.interface.board import Board
-from chess.pieces import PIECE_CLASS
-from chess.boards import BOARD_CLASS, STANDARD_BOARD
 import sys
+
+from chess.boards import BOARD_CLASS, STANDARD_BOARD
+from chess.interface.board import Board
+from chess.interface.piece import Piece
+from chess.pieces import PIECE_CLASS
+
 
 def get_piece_class(piece_type: str) -> type[Piece]:
     """Get the class of the piece.
@@ -17,27 +19,29 @@ def get_piece_class(piece_type: str) -> type[Piece]:
         raise ValueError(f"Invalid piece type: {piece_type}")
     return PIECE_CLASS[piece_type.lower()]
 
+
 def get_board_class(board_type: str) -> type[Board]:
-    """Get the class of the board.
-    """
+    """Get the class of the board."""
     if board_type.lower() not in BOARD_CLASS:
         raise ValueError(f"Invalid board type: {board_type}")
     return BOARD_CLASS[board_type.lower()]
 
+
 def get_guide() -> str:
     """
     Get the guide for the user.
-    """ 
+    """
     guide = """
     Enter the type of piece and position to get all possible moves.
     Example: 'Pawn, A1'
     """
     return guide
 
+
 def main():
     print("Welcome to Chess! Let's play!")
     print(get_guide())
-    
+
     while True:
         try:
             if len(sys.argv) > 1:
@@ -54,18 +58,20 @@ def main():
             print(get_guide())
             break
 
+
 def clean_input(user_input: str) -> str:
     """
     Clean the user input.
     """
     return user_input.strip().upper()
 
+
 def process_move(user_input: str):
     """
     Process the move from the user input.
     """
     piece_type, position = user_input.split(",")
-    piece_type = clean_input(piece_type)    
+    piece_type = clean_input(piece_type)
     position = clean_input(position)
 
     piece_class = get_piece_class(piece_type)
@@ -75,7 +81,7 @@ def process_move(user_input: str):
         raise ValueError(f"Invalid notation: {position}")
 
     piece = piece_class(position)
-    piece.set_coordinates(board.notation_to_cell_coordinates(position))   
+    piece.set_coordinates(board.notation_to_cell_coordinates(position))
 
     coordinates_validator = board.get_coordinates_validator()
     moves_coordinates = piece.get_possible_moves(coordinates_validator)
@@ -84,6 +90,6 @@ def process_move(user_input: str):
     print(f"Possible moves for {piece_type} at {position}:")
     print(moves)
 
+
 if __name__ == "__main__":
     main()
-

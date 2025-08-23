@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Callable
 
+
 class Piece(ABC):
 
     def __init__(self, notation: str):
@@ -13,17 +14,15 @@ class Piece(ABC):
         self._coordinates = None
 
     def set_coordinates(self, coordinates: tuple[int, int]):
-        """Set the coordinates of the piece.
-        """
+        """Set the coordinates of the piece."""
         self._coordinates = coordinates
 
     def get_coordinates(self) -> tuple[int, int]:
-        """Get the coordinates of the piece.
-        """
+        """Get the coordinates of the piece."""
         if self._coordinates is None:
             raise ValueError("Coordinates are not set")
         return self._coordinates
-    
+
     @abstractmethod
     def get_move_directions(self) -> tuple[list[tuple[int, int]], bool]:
         """Get the move directions of the piece.
@@ -34,8 +33,9 @@ class Piece(ABC):
         """
         pass
 
-
-    def get_possible_moves(self, coordinates_validator: Callable[[tuple[int, int]], bool]) -> list[tuple[int, int]]:
+    def get_possible_moves(
+        self, coordinates_validator: Callable[[tuple[int, int]], bool]
+    ) -> list[tuple[int, int]]:
         """
         Get all possible moves for a piece from a given position.
 
@@ -64,5 +64,3 @@ class Piece(ABC):
                     moves.append((new_col, new_row))
 
         return moves
-        
-

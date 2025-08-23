@@ -1,12 +1,12 @@
 from chess.interface.piece import Piece
 
+
 class Queen(Piece):
-    """Queen piece 
-    """
+    """Queen piece"""
 
     def get_move_directions(self) -> tuple[list[tuple[int, int]], bool]:
         """Get all possible moves for a queen piece from a given notation.
-        
+
         Possible behaviors:
         - Move in any direction
         - Move indefinitely
