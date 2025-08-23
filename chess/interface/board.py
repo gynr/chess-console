@@ -23,9 +23,16 @@ class Board(ABC):
         pass
 
     @abstractmethod
-    def is_valid_position(self, position: tuple[int, int]) -> bool:
+    def is_valid_notation(self, notation: str) -> bool:
         """
-        Check if a position is valid on the board.
+        Check if a notation is valid on the board.
+        """
+        pass
+
+    @abstractmethod
+    def is_valid_cell_coordinates(self, cell_coordinates: tuple[int, int]) -> bool:
+        """
+        Check if a cell coordinates are valid on the board.
         """
         pass
 
