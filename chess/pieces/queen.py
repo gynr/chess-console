@@ -38,7 +38,8 @@ class Queen(Piece):
             new_col = col + direction[0]
             new_row = row + direction[1]
 
-            # Check for all cells in the direction until the edge of the board is reached
+            # Check for all cells in the current direction 
+            # until the edge of the board is reached
             while board.is_valid_cell_coordinates((new_col, new_row)):
                 moves.append((new_col, new_row))
                 new_col += direction[0]
