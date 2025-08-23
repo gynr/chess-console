@@ -64,3 +64,4 @@ coverage.xml
 
 # Added by me
 venv*/
+.ruff_cache/
