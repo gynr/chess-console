@@ -30,14 +30,12 @@ List of application features
 
 1. Clone the repository:
    ```bash
-   git clone git@github.com:gynr/chess-console.git
-   cd chess-console
+   git clone git@github.com:gynr/chess-console.git && cd chess-console
    ```
 
-2. Create and activate virtual env
+2. Create virtual env
     ```bash
-    python3 -m venv venvChessConsole
-    source venvChessConsole/bin/activate
+    python3 -m venv venvChessConsole && source venvChessConsole/bin/activate
     ```
 
 3. Install depenendcies
@@ -73,6 +71,10 @@ List of application features
 2. Run following command:
     ```bash
     pytest tests -v
+    ```
+3. Check test coverage for the project.
+    ```bash
+    pytest --cov=. --cov-report=term-missing tests
     ```
 
 
