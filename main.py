@@ -5,6 +5,10 @@ from chess.interface.board import Board
 from chess.interface.piece import Piece
 from chess.pieces import PIECE_CLASS
 
+# Arguments supported by the app
+EXIT = "EXIT"
+GUIDE = "GUIDE"
+
 
 def get_piece_class(piece_type: str) -> type[Piece]:
     """Get the class of the piece.
@@ -32,8 +36,22 @@ def get_guide() -> str:
     Get the guide for the user.
     """
     guide = """
-    Enter the type of piece and position to get all possible moves.
+    ------------------------------------------------------------
+    CHESS GUIDE:
+    ------------------------------------------------------------
+    Chess simulation of 8x8 chess board. With chess notations as:
+    * Rows: A-H
+    * Columns: 1-8
+
+    Supported Chess Pieces:
+    * Pawn: It can only move 1 step at a time, in the vertical forward direction.
+    * King: It can only move 1 step at a time, in all 8 directions (vertical, horizontal and diagonal)
+    * Queen: It can move across the board in all 8 directions.
+
     Example: 'Pawn, A1'
+
+    To exit, type 'exit'. To get this guide, type 'guide'.
+    ------------------------------------------------------------
     """
     return guide
 
@@ -44,18 +62,41 @@ def main():
 
     while True:
         try:
+            # If input given as command line arguments
             if len(sys.argv) > 1:
                 user_input = sys.argv[1]
                 print(f"Processing: {user_input}")
                 process_move(user_input)
                 break
+            else:
+                # If input given as user input
+                user_input = input("\nEnter the move (e.g. 'Pawn, A1'): ")
+
+                user_input = clean_input(user_input)
+
+                if not user_input:
+                    print("No input provided. Please try again.")
+                    continue
+
+                if user_input == EXIT:
+                    print("Exiting...Goodbye!")
+                    break
+
+                if user_input == GUIDE:
+                    print(get_guide())
+                    continue
+
+                process_move(user_input)
+                continue
         except KeyboardInterrupt:
-            print("Goodbye!")
+            print("Stopped by user. Goodbye!")
+            break
+        except ValueError as e:
+            print(f"Error: {e}")
+            print("Please try again! For help, type 'guide'. To exit, type 'exit'.")
             break
         except Exception as e:
             print(f"Error: {e}")
-            print("Please try again with format: 'PieceType, Position'")
-            print(get_guide())
             break
 
 
@@ -87,8 +128,7 @@ def process_move(user_input: str):
     moves_coordinates = piece.get_possible_moves(coordinates_validator)
     moves = [board.cell_coordinates_to_notation(move) for move in moves_coordinates]
 
-    print(f"Possible moves for {piece_type} at {position}:")
-    print(moves)
+    print(f"Possible moves for {piece_type} at {position}: {moves}")
 
 
 if __name__ == "__main__":
