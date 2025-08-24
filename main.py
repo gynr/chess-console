@@ -39,7 +39,7 @@ def get_guide() -> str:
     ------------------------------------------------------------
     CHESS GUIDE:
     ------------------------------------------------------------
-    Chess simulation of 8x8 chess board. With chess notations as:
+    Chess simulation of 8x8 empty chess board. With chess notations as:
     * Rows: A-H
     * Columns: 1-8
 
@@ -49,6 +49,8 @@ def get_guide() -> str:
     * Queen: It can move across the board in all 8 directions.
 
     Example: 'Pawn, A1'
+
+    Output: All possible cells in which the chess piece can move from its current position.
 
     To exit, type 'exit'. To get this guide, type 'guide'.
     ------------------------------------------------------------

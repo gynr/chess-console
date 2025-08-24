@@ -8,6 +8,7 @@ List of application features
 
 1. **Chessboard Setup**
 
+   * Empty chess board.
    * 8×8 grid (64 cells).
    * Rows labeled `1–8`, columns labeled `A–H`.
    * Each cell uniquely identified (e.g., `A1`, `H8`).
@@ -44,9 +45,35 @@ List of application features
     pip install -r requirements.txt
     ```
 
+4. Pre-commit hook setup
+    ```bash
+    pre-commit install
+    ```
+
 ## How to Run the Program
 
+1. Make sure you have completed `Setup Instructions`
+2. Run following command:
+    ```bash
+    python main.py "Pawn, A1"
+    ```
+    * Here we pass two args: `<Chess Piece Name>, <Chess notation of the piece>`
+    * Piece supported: `Pawn`, `Queen`, `King`
+    * Standard chess notion: `<A-H><1-9>`
 
+3. Output moves: `["A2"]` 
+4. To exit the app, enter `exit`.
+5. To get thye help, enter `guide`.
+
+
+## How to run tests
+
+1. Make sure you have completed `Setup Instructions`
+
+2. Run following command:
+    ```bash
+    pytest tests -v
+    ```
 
 
 
