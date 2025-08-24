@@ -33,7 +33,7 @@ List of application features
    git clone git@github.com:gynr/chess-console.git && cd chess-console
    ```
 
-2. Create virtual env
+2. Create virtual and activate virtual env
     ```bash
     python3 -m venv venvChessConsole && source venvChessConsole/bin/activate
     ```
@@ -51,28 +51,32 @@ List of application features
 ## How to Run the Program
 
 1. Make sure you have completed `Setup Instructions`
-2. Run following command:
+2. Run following command to run in **command-line mode**:
     ```bash
     python main.py "Pawn, A1"
     ```
     * Here we pass two args: `<Chess Piece Name>, <Chess notation of the piece>`
     * Piece supported: `Pawn`, `Queen`, `King`
     * Standard chess notion: `<A-H><1-9>`
-
 3. Output moves: `["A2"]` 
-4. To exit the app, enter `exit`.
-5. To get thye help, enter `guide`.
+4. Run following command to run as **interactive mode**:
+   ```bash
+   python main.py
+   ```
+   * To **exit** the app, enter `exit`.
+   * To get thye **help**, enter `guide`.
+
 
 
 ## How to run tests
 
 1. Make sure you have completed `Setup Instructions`
 
-2. Run following command:
+2. Run following command to **run unittest cases**
     ```bash
     pytest tests -v
     ```
-3. Check test coverage for the project.
+3. Check **test coverage** for the project.
     ```bash
     pytest --cov=. --cov-report=term-missing tests
     ```
